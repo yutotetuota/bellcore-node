@@ -1,20 +1,20 @@
-Bitcore Node
+Bellcore Node
 ============
 
-A Bitcoin blockchain indexing and query service. Intended to be used with as a Bitcoin full node or in conjunction with a Bitcoin full node.
+A Bellcoin blockchain indexing and query service. Intended to be used with as a Bellcoin full node or in conjunction with a Bellcoin full node.
 
-## Upgrading from previous versions of Bitcore Node
+## Upgrading from previous versions of Bellcore Node
 
-There is no upgrade path from previous versions of Bitcore Node due to the removal of the included Bitcoin Core software. By installing this version, you must resynchronize the indexes from scratch.
+There is no upgrade path from previous versions of Bellcore Node due to the removal of the included Bellcoin Core software. By installing this version, you must resynchronize the indexes from scratch.
 
 ## Install
 
 ```bash
 npm install
-./bin/bitcore-node start
+./bin/bellcore-node start
 ```
 
-Note: A default configuration file is placed in the bitcore user's home directory (~/.bitcore/bitcore-node.json). Or, alternatively, you can copy the provided "bitcore-node.json.sample" file to the project's root directory as bitcore-node.json and edit it for your preferences. If you don't have a preferred block source (trusted peer), [Bcoin](https://github.com/bcoin-org/bcoin) will be started automatically and synchronized with the mainnet chain.
+Note: A default configuration file is placed in the bitcore user's home directory (~/.bellcore/bellcore-node.json). Or, alternatively, you can copy the provided "bellcore-node.json.sample" file to the project's root directory as bitcore-node.json and edit it for your preferences. If you don't have a preferred block source (trusted peer), [Bcoin](https://github.com/yutotetuota/bcoin) will be started automatically and synchronized with the mainnet chain.
 
 ## Prerequisites
 
@@ -24,7 +24,7 @@ Note: A default configuration file is placed in the bitcore user's home director
 
 ## Configuration
 
-The main configuration file is called "bitcore-node.json". This file instructs bitcore-node for the following options:
+The main configuration file is called "bellcore-node.json". This file instructs bellcore-node for the following options:
 
 - location of database files (datadir)
 - tcp port for web services, if configured (port)
@@ -34,11 +34,10 @@ The main configuration file is called "bitcore-node.json". This file instructs b
 
 ## Add-on Services
 
-There are several add-on services available to extend the functionality of Bitcore:
+There are several add-on services available to extend the functionality of Bellcore:
 
-- [Insight API](https://github.com/bitpay/insight-api)
-- [Insight UI](https://github.com/bitpay/insight-ui)
-- [Bitcore Wallet Service](https://github.com/bitpay/bitcore-wallet-service)
+- [Insight API](https://github.com/yutotetuota/insight-api-bellcoin)
+- [Insight UI](https://github.com/yutotetuota/insight-ui-bellcoin)
 
 ## Documentation
 
@@ -69,3 +68,4 @@ Code released under [the MIT license](https://github.com/bitpay/bitcore-node/blo
 Copyright 2013-2017 BitPay, Inc.
 
 - bitcoin: Copyright (c) 2009-2015 Bitcoin Core Developers (MIT License)
+- bellcoin: Copyright (c) 2018 Bellcoin Core Developers (MIT License)

@@ -1,16 +1,16 @@
 # Services
-Bitcore Node has a service module system that can start up additional services that can include additional:
+Bellcore Node has a service module system that can start up additional services that can include additional:
 - Blockchain indexes (e.g. querying balances for addresses)
 - API methods
 - HTTP routes
 - Event types to publish and subscribe
 
-The `bitcore-node.json` file describes which services will load for a node:
+The `bellcore-node.json` file describes which services will load for a node:
 
 ```json
 {
   "services": [
-    "bitcoind", "web"
+    "bellcoind", "web"
   ]
 }
 ```
@@ -20,36 +20,36 @@ Services correspond with a Node.js module as described in 'package.json', for ex
 ```json
 {
   "dependencies": {
-    "bitcore-lib": "^0.13.7",
-    "bitcore-node": "^0.2.0",
-    "insight-api": "^3.0.0"
+    "bellcore-lib": "^0.13.7",
+    "bellcore-node": "^0.2.0",
+    "insight-api-bellcoin": "^3.0.0"
   }
 }
 ```
 
-_Note:_ If you already have a bitcore-node database, and you want to query data from previous blocks in the blockchain, you will need to reindex. Reindexing right now means deleting your bitcore-node database and resyncing.
+_Note:_ If you already have a bellcore-node database, and you want to query data from previous blocks in the blockchain, you will need to reindex. Reindexing right now means deleting your bellcore-node database and resyncing.
 
 ## Using Services Programmatically
 If, instead, you would like to run a custom node, you can include services by including them in your configuration object when initializing a new node.
 
 ```js
-//Require bitcore
-var bitcore = require('bitcore-node');
+//Require bellcore
+var bellcore = require('bellcore-node');
 
 //Services
-var Bitcoin = bitcore.services.Bitcoin;
-var Web = bitcore.services.Web;
+var Bitcoin = bellcore.services.Bitcoin;
+var Web = bellcore.services.Web;
 
-var myNode = new bitcore.Node({
+var myNode = new bellcore.Node({
   network: 'regtest'
   services: [
     {
-      name: 'bitcoind',
+      name: 'bellcoind',
       module: Bitcoin,
       config: {
         spawn: {
-          datadir: '/home/<username>/.bitcoin',
-          exec: '/home/<username>/bitcore-node/bin/bitcoind'
+          datadir: '/home/<username>/.bellcoin',
+          exec: '/home/<username>/bellcore-node/bin/bellcoind'
         }
       }
     },
@@ -67,7 +67,7 @@ var myNode = new bitcore.Node({
 Now that you've loaded your services you can access them via `myNode.services.<service-name>.<method-name>`. For example if you wanted to check the balance of an address, you could access the address service like so.
 
 ```js
-myNode.services.bitcoind.getAddressBalance('1HB5XMLmzFVj8ALj6mfBsbifRoD4miY36v', false, function(err, total) {
+myNode.services.bellcoind.getAddressBalance('1HB5XMLmzFVj8ALj6mfBsbifRoD4miY36v', false, function(err, total) {
   console.log(total.balance); //Satoshi amount of this address
 });
 ```
@@ -82,7 +82,7 @@ A new service can be created by inheriting from `Node.Service` and implementing 
 - `Service.prototype.getPublishEvents()` - Describes which events can be subscribed to for this service, useful to subscribe to events over the included web socket API.
 - `Service.prototype.setupRoutes()` - A service can extend HTTP routes on an express application by implementing this method.
 
-The `package.json` for the service module can either export the `Node.Service` directly, or specify a specific module to load by including `"bitcoreNode": "lib/bitcore-node.js"`.
+The `package.json` for the service module can either export the `Node.Service` directly, or specify a specific module to load by including `"bellcoreNode": "lib/bellcore-node.js"`.
 
 Please take a look at some of the existing services for implementation specifics.
 

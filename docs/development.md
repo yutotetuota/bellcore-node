@@ -10,22 +10,22 @@ nvm install v4
 
 ## Fork and Download Repositories
 
-To develop bitcore-node:
+To develop bellcore-node:
 
 ```bash
 cd ~
-git clone git@github.com:<yourusername>/bitcore-node.git
-git clone git@github.com:<yourusername>/bitcore-lib.git
+git clone git@github.com:<yourusername>/bellcore-node.git
+git clone git@github.com:<yourusername>/bellcore-lib.git
 ```
 
-To develop bitcoin or to compile from source:
+To develop bellcoin or to compile from source:
 
 ```bash
-git clone git@github.com:<yourusername>/bitcoin.git
+git clone git@github.com:<yourusername>/bellcoin.git
 git fetch origin <branchname>:<branchname>
 git checkout <branchname>
 ```
-**Note**: See bitcoin documentation for building bitcoin on your platform.
+**Note**: See bellcoin documentation for building bellcoin on your platform.
 
 
 ## Install Development Dependencies
@@ -46,27 +46,27 @@ brew install zeromq
 ## Install and Symlink
 
 ```bash
-cd bitcore-lib
+cd bellcore-lib
 npm install
-cd ../bitcore-node
+cd ../bellcore-node
 npm install
 ```
-**Note**: If you get a message about not being able to download bitcoin distribution, you'll need to compile bitcoind from source, and setup your configuration to use that version.
+**Note**: If you get a message about not being able to download bellcoin distribution, you'll need to compile bellcoind from source, and setup your configuration to use that version.
 
 
-We now will setup symlinks in `bitcore-node` *(repeat this for any other modules you're planning on developing)*:
+We now will setup symlinks in `bellcore-node` *(repeat this for any other modules you're planning on developing)*:
 ```bash
 cd node_modules
-rm -rf bitcore-lib
-ln -s ~/bitcore-lib
-rm -rf bitcoind-rpc
-ln -s ~/bitcoind-rpc
+rm -rf bellcore-lib
+ln -s ~/bellcore-lib
+rm -rf bellcoind-rpc
+ln -s ~/bellcoind-rpc
 ```
 
-And if you're compiling or developing bitcoin:
+And if you're compiling or developing bellcoin:
 ```bash
 cd ../bin
-ln -sf ~/bitcoin/src/bitcoind
+ln -sf ~/bellcoin/src/bellcoind
 ```
 
 ## Run Tests
@@ -78,19 +78,19 @@ npm install mocha -g
 
 To run all test suites:
 ```bash
-cd bitcore-node
+cd bellcore-node
 npm run regtest
 npm run test
 ```
 
 To run a specific unit test in watch mode:
 ```bash
-mocha -w -R spec test/services/bitcoind.unit.js
+mocha -w -R spec test/services/bellcoind.unit.js
 ```
 
 To run a specific regtest:
 ```bash
-mocha -R spec regtest/bitcoind.js
+mocha -R spec regtest/bellcoind.js
 ```
 
 ## Running a Development Node
@@ -102,46 +102,46 @@ cd ~
 mkdir devnode
 cd devnode
 mkdir node_modules
-touch bitcore-node.json
+touch bellcore-node.json
 touch package.json
 ```
 
-Edit `bitcore-node.json` with something similar to:
+Edit `bellcore-node.json` with something similar to:
 ```json
 {
   "network": "livenet",
   "port": 3001,
   "services": [
-    "bitcoind",
+    "bellcoind",
     "web",
     "insight-api",
     "insight-ui",
     "<additional_service>"
   ],
   "servicesConfig": {
-    "bitcoind": {
+    "bellcoind": {
       "spawn": {
-        "datadir": "/home/<youruser>/.bitcoin",
-        "exec": "/home/<youruser>/bitcoin/src/bitcoind"
+        "datadir": "/home/<youruser>/.bellcoin",
+        "exec": "/home/<youruser>/bellcoin/src/bellcoind"
       }
     }
   }
 }
 ```
 
-**Note**: To install services [insight-api](https://github.com/bitpay/insight-api) and [insight-ui](https://github.com/bitpay/insight-ui) you'll need to clone the repositories locally.
+**Note**: To install services [insight-api](https://github.com/yutotetuota/insight-api-bellcoin) and [insight-ui](https://github.com/bitpay/insight-ui-bellcoin) you'll need to clone the repositories locally.
 
 Setup symlinks for all of the services and dependencies:
 
 ```bash
 cd node_modules
-ln -s ~/bitcore-lib
-ln -s ~/bitcore-node
-ln -s ~/insight-api
-ln -s ~/insight-ui
+ln -s ~/bellcore-lib
+ln -s ~/bellcore-node
+ln -s ~/insight-api-bellcoin
+ln -s ~/insight-ui-bellcoin
 ```
 
-Make sure that the `<datadir>/bitcoin.conf` has the necessary settings, for example:
+Make sure that the `<datadir>/bellcoin.conf` has the necessary settings, for example:
 ```
 server=1
 whitelist=127.0.0.1
@@ -152,11 +152,11 @@ spentindex=1
 zmqpubrawtx=tcp://127.0.0.1:28332
 zmqpubhashblock=tcp://127.0.0.1:28332
 rpcallowip=127.0.0.1
-rpcuser=bitcoin
+rpcuser=bellcoin
 rpcpassword=local321
 ```
 
 From within the `devnode` directory with the configuration file, start the node:
 ```bash
-../bitcore-node/bin/bitcore-node start
+../bellcore-node/bin/bellcore-node start
 ```

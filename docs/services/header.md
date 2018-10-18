@@ -1,6 +1,6 @@
 # Header Service
 
-The header service provides a header index for the Bitcoin blockchain. Specifically, it builds and maintains the following information about every bitcoin block header:
+The header service provides a header index for the Bellcoin blockchain. Specifically, it builds and maintains the following information about every bellcoin block header:
 
 - block hash
 - block height

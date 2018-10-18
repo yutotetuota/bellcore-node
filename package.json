@@ -1,38 +1,38 @@
 {
-  "name": "bitcore-node",
-  "description": "Full node with extended capabilities using Bitcore and Bitcoin Core",
+  "name": "bellcore-node",
+  "description": "Full node with extended capabilities using Bellcore and Bellcoin Core",
   "engines": {
     "node": ">=8.0.0"
   },
   "author": "BitPay <dev@bitpay.com>",
   "version": "5.0.0-beta.44",
   "main": "./index.js",
-  "repository": "git://github.com/bitpay/bitcore-node.git",
-  "homepage": "https://github.com/bitpay/bitcore-node",
+  "repository": "git://github.com/yutotetuota/bellcore-node.git",
+  "homepage": "https://github.com/yutotetuota/bellcore-node",
   "bugs": {
-    "url": "https://github.com/bitpay/bitcore-node/issues"
+    "url": "https://github.com/yutotetuota/bellcore-node/issues"
   },
   "bin": {
-    "bitcore-node": "./bin/bitcore-node"
+    "bellcore-node": "./bin/bellcore-node"
   },
   "scripts": {
     "test": "NODE_ENV=test mocha -R spec --recursive test"
   },
   "tags": [
-    "bitcoin",
-    "bitcoind",
+    "bellcoin",
+    "bellcoind",
     "bcoin",
-    "bitcoin full node",
-    "bitcoin index",
+    "bellcoin full node",
+    "bellcoin index",
     "block explorer",
     "wallet backend"
   ],
   "dependencies": {
     "async": "^2.5.0",
-    "bcoin": "bitpay/bcoin#v1.0.0-beta.14+cash",
+    "bcoin": "git://github.com/yutotetuota/bcoin.git",
     "bitcoind-rpc": "^0.6.0",
-    "bitcore-lib": "5.0.0-beta.1",
-    "bitcore-p2p": "5.0.0-beta.1",
+    "vertcore-lib": "git://github.com/yutotetuota/bellcore-lib.git",
+    "vertcore-p2p": "git://github.com/yutotetuota/bellcore-p2p.git",
     "bn.js": "^4.11.8",
     "body-parser": "^1.13.3",
     "colors": "^1.1.2",

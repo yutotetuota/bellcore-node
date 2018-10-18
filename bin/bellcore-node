@@ -1,0 +1,4 @@
+#!/usr/bin/env node
+
+var bellcore = require('../lib/cli/bitcore');
+bellcore();
