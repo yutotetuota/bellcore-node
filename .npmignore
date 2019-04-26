@@ -30,4 +30,4 @@ regtest/data/node3/regtest
 bellcore-node.json*
 *.bak
 *.orig
-lib/services/insight-api
+lib/services/insight-api-bellcoin
